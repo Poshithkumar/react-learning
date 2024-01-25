@@ -37,31 +37,50 @@ import React, { useState, useEffect,useRef } from 'react';
 import Timer from './Timer';
 import Input from './Input'
 
+// export default function App() {
+//   const [name, setName] = useState('');
+//   // const [renderCount, setRenderCount] = useState(0);
+//   const renderCount = useRef(1);
+//   const inputRef = useRef();
+//   // console.log(renderCount);
+
+//   // useEffect(() => {
+//   //   // setRenderCount(prevRenderCount => prevRenderCount + 1);
+//   //   renderCount.current = renderCount.current + 1;
+//   // });
+//   const focus = ()=>{
+//     inputRef.current.focus();
+//     console.log(inputRef.current.getBoundingClientRect())
+//     // console.log(inputRef.current);
+//   }
+
+//   return (
+//     <div>
+//       {/* <input ref={inputRef} onChange={(e) => setName(e.target.value)} /> */}
+//       {/* <div>My name is {name}, rendered {renderCount.current} times</div> */}
+//       <Input ref={inputRef}></Input>
+//       <button onClick={focus}>focus</button>
+//       <Timer></Timer>
+
+//     </div>
+//   );
+// }
+
 export default function App() {
-  const [name, setName] = useState('');
-  // const [renderCount, setRenderCount] = useState(0);
-  const renderCount = useRef(1);
-  const inputRef = useRef();
-  // console.log(renderCount);
+  const [statevar,setStateVar] = useState(0);
+  const refvar = useRef(0);
+  const local = 0;
 
-  // useEffect(() => {
-  //   // setRenderCount(prevRenderCount => prevRenderCount + 1);
-  //   renderCount.current = renderCount.current + 1;
-  // });
-  const focus = ()=>{
-    inputRef.current.focus();
-    console.log(inputRef.current.getBoundingClientRect())
-    // console.log(inputRef.current);
-  }
+  return <>
+  <button onClick={()=>{local+1}}>change local var</button>
+  <button  onClick={()=>{refvar.current+=1}}>change ref var</button>
+  <button  onClick={()=>{setStateVar((prev)=>prev+1)}}>change state var</button>
 
-  return (
-    <div>
-      {/* <input ref={inputRef} onChange={(e) => setName(e.target.value)} /> */}
-      {/* <div>My name is {name}, rendered {renderCount.current} times</div> */}
-      <Input ref={inputRef}></Input>
-      <button onClick={focus}>focus</button>
-      <Timer></Timer>
+  <div>state var: {statevar}</div>
+  <div>ref var: {refvar.current}</div>
+  <div>local var: {local}</div>
 
-    </div>
-  );
+  
+
+  </>
 }
