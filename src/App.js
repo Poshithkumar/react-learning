@@ -33,29 +33,28 @@
 // export default App;
 
 
-import React, { useState, useEffect,useRef } from 'react';
-import Timer from './Timer';
-import Input from './Input'
-import SecondComp from './SecondComp';
+import React, { useState, useEffect,useRef, useMemo } from 'react';
+import Table from './Table'
+ 
 
 export default function App() {
   
-  const [count,setCount]  = useState(0);
+  const [counter1,setCounter1] = useState(0);
+  const [counter2,setCounter2] = useState(0);
+  const obj = useMemo(()=>({age:18}),[])
+  const arr = useMemo(()=> ([1,2,3]),[])
 
-  const increment = ()=>{
-    setCount((prev)=>prev+1);
-    console.log("increment called");
-  }
+  
 
+  return <>
 
-  return (
-    <div>
-      You're in parent body <br></br>
-     {count} <button onClick={increment}>increment</button> <br/>
-     <SecondComp />
+   counter1: {counter1} <br/>
+   <button onClick={()=>setCounter1((prev)=>prev+1)}>count++</button> <br/>
+   counter2: {counter2} <br/>
+   <button onClick={()=>setCounter2((prev)=>prev+1)}>count++</button> <br/>
 
-    </div>
-  );
+  <Table num={counter1} obj={obj} arr={arr}/>
+  </>
 }
 
  
