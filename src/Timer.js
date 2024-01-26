@@ -3,7 +3,7 @@ import React,{useState,useEffect,useRef} from 'react'
 const Timer = () => {
   const [count, setCount] = useState(0);
   const [isTimerRunning,setisTimerRunning] = useState(true);
-  let interval = useRef();
+  let interval = useRef(null);
 
   useEffect(() => {
     if(isTimerRunning){
