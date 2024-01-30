@@ -1,26 +1,32 @@
-import React, { useState, useEffect,useRef, useMemo,lazy, Suspense } from 'react';
-import Table from './Table'
-// import Text from './Text' //this static importing
-import { ThemeContext } from './Context';
-import Navbar from './Navbar';
-import Heading from './Heading';
+// App.js
 
-// const Textlazy = lazy(()=>delayForDemo(import('./Text')))
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import Count from './Count';
 
-export default function App() {
-  
-    const [theme,toggleTheme] = useState('dark')   
+const initialState = {
+  count: 0
+};
 
-  return <>
-  <ThemeContext.Provider value={[theme,toggleTheme]}>
-    <Heading/> <br/>
-    <Navbar />
-  </ThemeContext.Provider>
-  </>
-  
-    
-  
+ 
+
+function App() {
+  const counter = useSelector(state => state.count);
+  const dispatch = useDispatch();
+
+  return (
+    <div>
+      <button onClick={() => dispatch({type: 'INCREMENT'})}>
+        Increment
+      </button>
+      {/* <h1>{state.count}</h1> */}
+      <Count />
+      <button onClick={() => dispatch({type: 'DECREMENT'})}>
+        Decrement
+      </button>
+
+    </div>
+  );
 }
 
- 
- 
+export default App;
