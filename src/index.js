@@ -38,16 +38,8 @@ const root = ReactDOM.createRoot(document.querySelector('#root'));
 <App />
 </Provider> */}
 root.render(
-<React.StrictMode>
-    <BrowserRouter>
-    <Link to="/">Home</Link> <br/>
-    <Link to="/about">About</Link>
-    <Routes>
-    <Route path="/" element={<Home />} />
-    <Route path="/about" element={<About />} />
-
-    </Routes>
-    </BrowserRouter>
-</React.StrictMode>
+    <App />
 );
+
+
 
